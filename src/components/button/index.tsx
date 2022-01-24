@@ -19,31 +19,39 @@ interface BaseButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.FC<BaseButtonProps> = (props) => {
+type ButtonProps = BaseButtonProps &
+  (
+    | React.ButtonHTMLAttributes<HTMLElement>
+    | React.AnchorHTMLAttributes<HTMLElement>
+  );
+
+const Button: React.FC<ButtonProps> = (props) => {
   const {
     type = ButtonType.Default,
     size,
     disabled = false,
     href,
     children,
+    className,
+    ...restProps
   } = props;
 
-  const cls = classNames('btn', {
+  const cls = classNames('btn', className, {
     [`btn-${type}`]: type,
     [`btn-${size}`]: size,
     disabled,
   });
 
-  if (type === ButtonType.Link) {
+  if (type === ButtonType.Link && href) {
     return (
-      <a href={href} className={cls}>
+      <a {...restProps} href={href} className={cls}>
         {children}
       </a>
     );
   }
 
   return (
-    <button className={cls} disabled={disabled}>
+    <button {...restProps} className={cls} disabled={disabled}>
       {children}
     </button>
   );

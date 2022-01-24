@@ -15,16 +15,14 @@
   font-family: $btn-font-family;
   transition: $btn-transition;
   border: $border-width solid $border-color;
+  background-color: $white;
 
   &.disabled,
   &:disabled {
     cursor: not-allowed;
+    pointer-events: none;
     opacity: $btn-disabled-opacity;
     box-shadow: none;
-
-    > * {
-      pointer-events: none;
-    }
   }
   &.focus,
   &:focus {
@@ -51,15 +49,23 @@
 }
 
 .btn-default {
-  @include btn-type(
-    $white,
-    $text-base-color,
-    $gray-400,
-    $white,
-    $primary,
-    $primary
-  );
-  background-color: transparent;
+  color: $text-base-color;
+  background-color: $white;
+  border-color: $gray-400;
+  &:hover {
+    color: $primary;
+    border-color: $primary;
+  }
+  &.active,
+  &:active {
+    color: darken($primary, 5%);
+    border-color: darken($primary, 5%);
+  }
+  &.disabled,
+  &:disabled {
+    color: $text-base-color;
+    background-color: $white;
+  }
 }
 
 .btn-primary {
@@ -76,5 +82,9 @@
   border: none;
   &:hover {
     color: $btn-link-hover-color;
+  }
+  &.disabled,
+  &:disabled {
+    color: $btn-link-color;
   }
 }
