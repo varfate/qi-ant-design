@@ -1,10 +1,46 @@
-import Button, { ButtonType, ButtonSize } from './components/button';
+import { Button, ButtonType, ButtonSize } from './components/button';
+import { Menu, MenuItem, SubMenu } from './components/menu';
 
 const App = () => {
   return (
     <div className="app">
+      <Menu>
+        <SubMenu title="SubMenu-1">
+          <MenuItem key="1-1">item 1-1</MenuItem>
+          <MenuItem key="1-2">item 1-2</MenuItem>
+          <MenuItem key="1-3" disabled>
+            item 1-3
+          </MenuItem>
+        </SubMenu>
+        <SubMenu title="SubMenu-2">
+          <MenuItem key="2-1">item 2-1</MenuItem>
+          <MenuItem key="2-2">item 2-2</MenuItem>
+          <MenuItem key="2-3" disabled>
+            item 2-3
+          </MenuItem>
+        </SubMenu>
+      </Menu>
+      <Menu mode="vertical">
+        <SubMenu title="SubMenu-1">
+          <MenuItem key="1-1">item 1-1</MenuItem>
+          <MenuItem key="1-2">item 1-2</MenuItem>
+          <MenuItem key="1-3" disabled>
+            item 1-3
+          </MenuItem>
+        </SubMenu>
+        <SubMenu title="SubMenu-2">
+          <MenuItem key="2-1">item 2-1</MenuItem>
+          <MenuItem key="2-2">item 2-2</MenuItem>
+          <MenuItem key="2-3" disabled>
+            item 2-3
+          </MenuItem>
+        </SubMenu>
+      </Menu>
+      <hr />
       <Button>button</Button>
-      <Button onClick={(e) => alert(e.target)} disabled>button</Button>
+      <Button onClick={(e) => alert(e.target)} disabled>
+        button
+      </Button>
       <Button type={ButtonType.Primary}>button primary</Button>
       <Button type={ButtonType.Danger}>button danger</Button>
       <Button type={ButtonType.Danger} size={ButtonSize.Large}>
@@ -16,10 +52,7 @@ const App = () => {
       <Button type={ButtonType.Danger} size={ButtonSize.Large} disabled>
         button
       </Button>
-      <Button
-        type={ButtonType.Link}
-        size={ButtonSize.Large}
-      >
+      <Button type={ButtonType.Link} size={ButtonSize.Large}>
         button link
       </Button>
       <Button

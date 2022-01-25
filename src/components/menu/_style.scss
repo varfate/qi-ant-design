@@ -1,0 +1,86 @@
+.qi-menu {
+  position: relative;
+  list-style: none;
+  display: flex;
+  box-shadow: $menu-box-shadow;
+  &-item {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    list-style: none;
+    cursor: pointer;
+    transition: $menu-transition;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $menu-item-active-color;
+    }
+    &.active {
+      color: $menu-item-active-color;
+    }
+    &.disabled {
+      color: $menu-item-disabled-color;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+
+.qi-menu-horizontal {
+  flex-direction: row;
+  .qi-menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
+    &.active,
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}
+
+.qi-menu-vertical {
+  flex-direction: column;
+  .qi-menu-item {
+    border-left: $menu-item-active-border-width solid transparent;
+    &.active,
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}
+
+.qi-sub-menu {
+  position: relative;
+  &.opened {
+    .qi-sub-menu-body {
+      display: block;
+    }
+  }
+}
+
+.qi-sub-menu-title {
+  display: flex;
+  align-items: center;
+}
+
+.qi-sub-menu-body {
+  list-style: none;
+  display: none;
+  .qi-menu-item {
+    border: none;
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+.qi-menu-horizontal {
+  .qi-sub-menu-body {
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 100%;
+    padding-left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+  }
+}
