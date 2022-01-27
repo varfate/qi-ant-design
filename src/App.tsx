@@ -1,9 +1,12 @@
 import { Button, ButtonType, ButtonSize } from './components/button';
+import { Icon } from './components/icon';
 import { Menu, MenuItem, SubMenu } from './components/menu';
 
 const App = () => {
   return (
     <div className="app">
+      <Icon icon='coffee' size="lg" type='primary' />
+      <hr />
       <Menu>
         <SubMenu title="SubMenu-1">
           <MenuItem key="1-1">item 1-1</MenuItem>

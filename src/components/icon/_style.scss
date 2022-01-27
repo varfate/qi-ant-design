@@ -1,0 +1,5 @@
+@each $theme, $color in $theme-colors {
+  .qi-icon-#{$theme} {
+    color: $color;
+  }
+}
