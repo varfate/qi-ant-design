@@ -1,0 +1,4 @@
+@include qi-animation-zoom-in('top', scaleY(0), scaleY(1), center top);
+@include qi-animation-zoom-in('bottom', scaleY(0), scaleY(1), center bottom);
+@include qi-animation-zoom-in('left', scaleX(0), scaleX(1), left center);
+@include qi-animation-zoom-in('right', scaleX(0), scaleX(1), right center);

@@ -11,7 +11,9 @@ import React, {
   useState,
 } from 'react';
 import { MenuItemProps } from '.';
+import { Icon } from '../icon';
 import MenuContext from './menu-context';
+import { Transition } from '../transition';
 
 export interface SubMenuProps extends React.HTMLAttributes<HTMLLIElement> {
   eventKey?: string;
@@ -23,9 +25,18 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const [opened, setOpened] = useState(false);
   const { mode } = useContext(MenuContext);
   const timerRef = useRef<NodeJS.Timeout>();
-  const cls = classNames('qi-menu-item qi-sub-menu', className, {
+  const cls = classNames('qi-sub-menu', className, {
     opened,
   });
+  const clickEvents = useMemo(() => {
+    if (mode === 'vertical') {
+      return {
+        onClick: () => {
+          setOpened((prev) => !prev);
+        },
+      };
+    }
+  }, [mode]);
 
   const mouseHandler = useCallback((toggle: boolean) => {
     timerRef.current && clearTimeout(timerRef.current);
@@ -34,22 +45,17 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     }, 300);
   }, []);
 
-  const events = useMemo(() => {
-    if (mode === 'vertical') {
+  const mouseEvents = useMemo(() => {
+    if (mode === 'horizontal') {
       return {
-        onClick: () => {
-          setOpened((prev) => !prev);
+        onMouseEnter: () => {
+          mouseHandler(true);
+        },
+        onMouseLeave: () => {
+          mouseHandler(false);
         },
       };
     }
-    return {
-      onMouseEnter: () => {
-        mouseHandler(true);
-      },
-      onMouseLeave: () => {
-        mouseHandler(false);
-      },
-    };
   }, [mode, mouseHandler]);
 
   const renderChildren = () => {
@@ -76,9 +82,14 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   };
 
   return (
-    <li className={cls} {...events}>
-      <div className="qi-sub-menu-title">{title}</div>
-      {renderChildren()}
+    <li className={cls} {...mouseEvents}>
+      <div className="qi-sub-menu-title" {...clickEvents}>
+        <span>{title}</span>
+        <Icon icon="angle-down" className="qi-sub-menu-title-suffix" />
+      </div>
+      <Transition in={opened} timeout={300} animation="zoom-in-top">
+        {renderChildren()}
+      </Transition>
     </li>
   );
 };

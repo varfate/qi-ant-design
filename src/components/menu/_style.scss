@@ -2,26 +2,8 @@
   position: relative;
   list-style: none;
   display: flex;
+  padding-left: 0;
   box-shadow: $menu-box-shadow;
-  &-item {
-    padding: $menu-item-padding-y $menu-item-padding-x;
-    list-style: none;
-    cursor: pointer;
-    transition: $menu-transition;
-    &:hover,
-    &:focus {
-      text-decoration: none;
-      color: $menu-item-active-color;
-    }
-    &.active {
-      color: $menu-item-active-color;
-    }
-    &.disabled {
-      color: $menu-item-disabled-color;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-  }
 }
 
 .qi-menu-horizontal {
@@ -31,6 +13,13 @@
     &.active,
     &:hover {
       border-color: $primary;
+    }
+  }
+  .qi-sub-menu {
+    &:hover {
+      .qi-sub-menu-title-suffix {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -44,25 +33,51 @@
       border-color: $primary;
     }
   }
+  .qi-sub-menu {
+    &.opened {
+      .qi-sub-menu-title-suffix {
+        transform: rotateX(180deg);
+      }
+    }
+  }
 }
 
 .qi-sub-menu {
   position: relative;
-  &.opened {
-    .qi-sub-menu-body {
-      display: block;
-    }
+}
+
+.qi-menu-item,
+.qi-sub-menu-title {
+  padding: $menu-item-padding-y $menu-item-padding-x;
+  list-style: none;
+  cursor: pointer;
+  transition: $menu-transition;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $menu-item-active-color;
+  }
+  &.active {
+    color: $menu-item-active-color;
+  }
+  &.disabled {
+    color: $menu-item-disabled-color;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
 .qi-sub-menu-title {
   display: flex;
   align-items: center;
+  &-suffix {
+    transition: transform 0.3s ease-in-out;
+    margin-left: 4px;
+  }
 }
 
 .qi-sub-menu-body {
   list-style: none;
-  display: none;
   .qi-menu-item {
     border: none;
     &:hover {

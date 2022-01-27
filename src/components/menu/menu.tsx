@@ -7,7 +7,7 @@ import { MenuItemProps } from './menu-item';
 export type MenuMode = 'horizontal' | 'vertical';
 
 export interface MenuProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+  extends Omit<React.HTMLAttributes<HTMLUListElement>, 'onSelect'> {
   defaultKey?: string;
   mode?: MenuMode;
   onSelect?: SelectCallback;
@@ -61,11 +61,11 @@ const Menu: React.FC<MenuProps> = (props) => {
   };
 
   return (
-    <div {...restProps} className={cls} data-testid="menu">
+    <ul {...restProps} className={cls} data-testid="menu">
       <MenuContext.Provider value={passedContext}>
         {renderChildren()}
       </MenuContext.Provider>
-    </div>
+    </ul>
   );
 };
 
