@@ -1,4 +1,4 @@
-.btn {
+.qi-btn {
   position: relative;
   display: inline-block;
   font-weight: $btn-font-weight;
@@ -30,7 +30,7 @@
   }
 }
 
-.btn-lg {
+.qi-btn-lg {
   @include btn-size(
     $btn-padding-x-lg,
     $btn-padding-y-lg,
@@ -68,15 +68,15 @@
   }
 }
 
-.btn-primary {
+.qi-btn-primary {
   @include btn-type($primary, $white);
 }
 
-.btn-danger {
+.qi-btn-danger {
   @include btn-type($danger, $white);
 }
 
-.btn-link {
+.qi-btn-link {
   color: $btn-link-color;
   box-shadow: none;
   border: none;
