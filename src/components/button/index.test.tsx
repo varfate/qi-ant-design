@@ -9,7 +9,7 @@ describe('测试 Button 组件', () => {
 
     expect(btn).toBeInTheDocument();
     expect(btn.tagName).toBe('BUTTON');
-    expect(btn).toHaveClass('btn', 'btn-default');
+    expect(btn).toHaveClass('qi-btn', 'qi-btn-default');
   });
   it('根据不同的 props, 应该渲染出正确的按钮', () => {
     const primaryText = "I'm a primary button";
@@ -19,8 +19,8 @@ describe('测试 Button 组件', () => {
     render(<Button type="danger">{dangerText}</Button>);
     const dangerBtn = screen.getByText(dangerText);
 
-    expect(primaryBtn).toHaveClass('btn', 'btn-primary');
-    expect(dangerBtn).toHaveClass('btn', 'btn-danger');
+    expect(primaryBtn).toHaveClass('qi-btn', 'qi-btn-primary');
+    expect(dangerBtn).toHaveClass('qi-btn', 'qi-btn-danger');
   });
   it('如果按钮类型为 Link 且传递了 href, 应该渲染为链接', () => {
     const text = "I'm a link";
@@ -32,7 +32,7 @@ describe('测试 Button 组件', () => {
     );
     const btn = screen.getByText(text);
 
-    expect(btn).toHaveClass('btn', 'btn-link');
+    expect(btn).toHaveClass('qi-btn', 'qi-btn-link');
     expect(btn.tagName).toBe('A');
     expect(btn.getAttribute('href')).toBe(href);
   });
@@ -41,7 +41,7 @@ describe('测试 Button 组件', () => {
     render(<Button type='link'>{text}</Button>);
     const btn = screen.getByText(text);
 
-    expect(btn).toHaveClass('btn-link');
+    expect(btn).toHaveClass('qi-btn-link');
     expect(btn.tagName).toBe('BUTTON');
   });
   it('如果禁用, 应渲染为禁用状态', () => {

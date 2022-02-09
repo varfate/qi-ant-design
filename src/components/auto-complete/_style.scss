@@ -1,0 +1,31 @@
+.qi-auto-complete {
+  position: relative;
+  display: inline-block;
+  &-dropdown {
+    position: absolute;
+    z-index: 999;
+    top: calc(100% + 8px);
+    left: 0;
+    overflow: auto;
+    max-height: 300px;
+    min-width: 100%;
+    list-style: none;
+    background-color: $white;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+    padding: 4px 8px;
+    margin: 0;
+    .highlighted {
+      background-color: $primary;
+      color: $white;
+    }
+    &-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 75px;
+      font-size: 40px;
+      color: $primary;
+    }
+  }
+}

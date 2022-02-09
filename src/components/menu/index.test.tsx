@@ -98,13 +98,14 @@ describe('测试 Menu 和 MenuItem 组件', () => {
     expect(menuElement).toHaveClass('qi-menu-vertical');
   });
 
-  it('render SubMenu correctly', () => {
+  it('render SubMenu correctly', async () => {
     setUp(testMenuProps);
     menuElement.appendChild(createStyle());
     const title = screen.getByText('sub-1');
     const subMenu = screen.getByText('sub-1-1');
 
     expect(title).toBeInTheDocument();
+
     expect(subMenu).toBeInTheDocument();
     expect(subMenu).not.toBeVisible();
   });

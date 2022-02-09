@@ -7,6 +7,7 @@ describe('test Input component', () => {
     onChange: jest.fn(),
     placeholder,
   };
+
   it('should render input', () => {
     render(<Input {...defaultProps} />);
     const inputElement = screen.getByPlaceholderText(

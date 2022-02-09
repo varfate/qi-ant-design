@@ -20,7 +20,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
     animation,
     children,
     appear = true,
-    unmountOnExit = true,
+    unmountOnExit = false,
     ...restProps
   } = props;
   return (
