@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Icon, IconProps } from '../icon';
 
 export type ButtonType = 'primary' | 'danger' | 'default' | 'link';
 
@@ -13,6 +14,7 @@ interface BaseButtonProps {
   href?: string;
   /** 是否禁用 */
   disabled?: boolean;
+  icon?: IconProps['icon'];
 }
 
 export type ButtonProps = BaseButtonProps &
@@ -33,6 +35,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     href,
     children,
     className,
+    icon,
     ...restProps
   } = props;
 
@@ -52,6 +55,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
   return (
     <button {...restProps} className={cls} disabled={disabled}>
+      {!!icon && <Icon icon={icon} className="qi-btn-icon" />}
       {children}
     </button>
   );
